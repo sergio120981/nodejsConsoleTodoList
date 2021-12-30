@@ -6,6 +6,7 @@ This is an example of an TodoList app made with Node.Js and extras JS libraries 
 
 After clone, must execute:
 ```console
+user@debian:~$ npm install
 user@debian:~$ node app.js
 ```
 
