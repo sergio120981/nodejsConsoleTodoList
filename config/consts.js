@@ -1,0 +1,9 @@
+module.exports={
+    'CREATE':'1',
+    'LIST':'2',
+    'LISTCOMPLETED':'3',
+    'LISTPENDING':'4',
+    'COMPLETE':'5',
+    'DELETE':'6',
+    'EXIT':'0'
+};
