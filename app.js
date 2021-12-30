@@ -1,7 +1,7 @@
 const { inquirerMenu, pausa, leerInput } = require('./helpers/inquirer');
 const Tareas = require('./models/tareas');
 const menuOpts= require('./config/consts');
-const guardarFile=require('./helpers/guardarFile');
+const {guardarFile, leerDB}=require('./helpers/guardarFile');
 
 require('colors');
 
@@ -13,6 +13,9 @@ const main= async ()=>{
     let opt='';
 
     const tareas=new Tareas();
+
+    const tareasDB=leerDB();
+
 
     do{
         opt=await inquirerMenu();

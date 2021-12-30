@@ -1,9 +1,18 @@
 const fs = require('fs');
 
+const ARCHIVOBD='./db/data.json';
 
 const guardarFile = (data)=>{
-    const file='./db/data.json';
-    fs.writeFileSync(file, JSON.stringify(data));
+    fs.writeFileSync(ARCHIVOBD, JSON.stringify(data));
 }
 
-module.exports= guardarFile ;
+const leerDB=()=>{
+    if(!fs.existsSync(ARCHIVOBD)){
+        return null;
+    }
+    const info=fs.readFileSync(ARCHIVOBD, {encoding:'utf-8'});
+
+    console.log(info);
+}
+
+module.exports= {guardarFile, leerDB} ;
