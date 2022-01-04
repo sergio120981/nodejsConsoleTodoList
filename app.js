@@ -5,18 +5,14 @@ const {guardarFile, leerDB}=require('./helpers/guardarFile');
 
 require('colors');
 
-//const { mostrarMenu, pausa } = require('./helpers/mensajes');
-
-//console.clear();
+console.clear();
 const main= async ()=>{
 
     let opt='';
 
-    const tareas=new Tareas();
-
+    let tareas=new Tareas();
     const tareasDB=leerDB();
-
-
+    tareas.loadlistadoArray(tareasDB);
     do{
         opt=await inquirerMenu();
         
@@ -35,7 +31,7 @@ const main= async ()=>{
             break;
         };
         
-        //guardarFile(tareas.listadoArray);
+        guardarFile(tareas.listadoArray);
 
         await pausa();
     }while(opt.opcion!==menuOpts.EXIT);

@@ -12,7 +12,7 @@ const leerDB=()=>{
     }
     const info=fs.readFileSync(ARCHIVOBD, {encoding:'utf-8'});
 
-    console.log(info);
+    return(info);
 }
 
 module.exports= {guardarFile, leerDB} ;
