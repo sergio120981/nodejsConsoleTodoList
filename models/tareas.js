@@ -33,14 +33,12 @@ class Tareas {
         return listado;
     }
 
-    loadlistadoArray(jsonBD){
-        const listado=JSON.parse(jsonBD);
-        if(listado.length===0)return null;
-
-        listado.forEach((tarea)=>{
+    loadlistadoArray(jsonBD=[]){
+        
+        jsonBD.forEach((tarea)=>{
             this._listado[ tarea.id ]= tarea;
-            //this.crearTarea(tarea.desc, tarea.id, tarea.completadoEn);
         });
+        
     }
 };
 
