@@ -23,11 +23,16 @@ const main= async ()=>{
             break;
         
             case menuOpts.LIST:
-                console.log(tareas.listadoArray);
+                tareas.listadoCompleto();
+                //console.log(tareas.listadoArray);
             break;
 
-            case menuOpts.COMPLETE:
-                console.log(`completar tarea ${ 123 }`);
+            case menuOpts.LISTCOMPLETED:
+                tareas.getTareasPendientesOrCompletadas(true);
+            break;
+
+            case menuOpts.LISTPENDING:
+                tareas.getTareasPendientesOrCompletadas(false);
             break;
         };
         

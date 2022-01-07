@@ -1,3 +1,4 @@
+const { green } = require('colors');
 const Tarea=require('./tarea');
 require('colors');
 
@@ -35,11 +36,36 @@ class Tareas {
 
     loadlistadoArray(jsonBD=[]){
         
-        jsonBD.forEach((tarea)=>{
-            this._listado[ tarea.id ]= tarea;
-        });
-        
+        jsonBD.forEach((tarea)=>{this._listado[ tarea.id ]= tarea;});
+
     }
+
+    listadoCompleto(){
+        Object.values(this._listado).forEach((tarea, idx) =>{
+            let id=green(idx+1);
+            let comp=tarea.completadoEn?'Completado'.green:'Pendiente'.red;
+            console.log(`${id}. ${tarea.desc} :: ${comp}`);
+            
+        });
+    }
+
+    getTareasPendientesOrCompletadas(completado=true){
+        let idx=1;
+        console.log();
+        Object.values(this._listado).filter(tarea =>{
+
+            if(!!tarea.completadoEn===completado){
+                
+                let id=green(idx++);
+                let comp=tarea.completadoEn?'Completado'.green:'Pendiente'.red;
+                console.log(`${id}. ${tarea.desc} :: ${comp}`);
+
+            }
+            
+        });
+    }
+
+
 };
 
 module.exports=Tareas;
