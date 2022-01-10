@@ -9,6 +9,11 @@ class Tareas {
         this._listado={};
     };
 
+    borrarTarea(id=''){
+        if(this._listado[id])
+            delete this._listado[id];
+    }
+
     crearTarea(desc='', id=null, completadoEn=null){
         const tarea=new Tarea(desc, id, completadoEn);
         this._listado[tarea.id]=tarea;
@@ -64,6 +69,8 @@ class Tareas {
             
         });
     }
+
+    
 
 
 };

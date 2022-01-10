@@ -80,4 +80,52 @@ const leerInput=async(message)=>{
     return desc;
 }
 
-module.exports={inquirerMenu, pausa, leerInput};
+const listadoTareasBorrar = async ( tareas=[] ) =>{
+
+    let choices=tareas.map((tarea, i) => {
+        
+        const idx=`${i+1}`.green;
+        return {
+            name: `${idx}. ${tarea.desc}`,
+            value: `${tarea.id}`
+        };    
+    });
+
+    choices.unshift({
+        name: `Cancelar opcion...`.red,
+        value: '0'
+    });
+
+    const preguntas=[{
+        type: 'list',
+        name: 'opcion',
+        message: 'Qué elemento desea borrar?'.toUpperCase().bold.blue,
+        choices}];
+
+    console.log();
+    const id = await inquirer.prompt(preguntas);
+    return id;
+
+}
+
+const confirmacion = async (mensaje)=>{
+
+    const q=[{
+        type:'confirm',
+        name:'ok',
+        message: mensaje
+    }];
+
+    const id = await inquirer.prompt(q);
+    
+    return id;
+    
+};
+
+module.exports={
+    confirmacion, 
+    inquirerMenu, 
+    pausa, 
+    leerInput, 
+    listadoTareasBorrar
+};
