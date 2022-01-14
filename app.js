@@ -1,4 +1,4 @@
-const { inquirerMenu, pausa, leerInput, listadoTareasBorrar, confirmacion } = require('./helpers/inquirer');
+const { mostrarListadoCheck,inquirerMenu, pausa, leerInput, listadoTareasBorrar, confirmacion } = require('./helpers/inquirer');
 const Tareas = require('./models/tareas');
 const menuOpts= require('./config/consts');
 const {guardarFile, leerDB}=require('./helpers/guardarFile');
@@ -46,6 +46,12 @@ const main= async ()=>{
                     }
                 }
 
+            break;
+
+            case menuOpts.COMPLETE:
+                
+                const ids=(await mostrarListadoCheck(tareas.listadoArray));
+                tareas.toggleCompletadas(ids);
             break;
         };
         
